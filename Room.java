@@ -102,6 +102,31 @@ public class Room
    }
    
    /*
+      Method to convert the number used for the shade the amount that represents as a string
+      @return shadeString The word used for the amount of shade the room receives
+   **/
+   public String shadeString()
+   {
+      int s = getShade();
+      String shadeString;
+      
+      if (s == 1)
+      {
+         shadeString = "Little";
+      }
+      else if (s == 2)
+      {
+         shadeString = "Moderate";
+      }
+      else
+      {
+         shadeString = "Abundant";
+      }
+      
+      return shadeString;
+   }
+   
+   /*
       method to calculate the area of a room
       @return The area found by multiplying the length and width
    **/
@@ -128,8 +153,8 @@ public class Room
       final int ROOMLARGE = 999;
       
       // Constants for the shade 
-      final double LIGHTLY = 0.9;
-      final double ABUNDANT = 1.15;
+      final double LIGHTLY = 1.15;
+      final double ABUNDANT = .9;
       
       // variable to hold the return value
       double btu;
