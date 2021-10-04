@@ -137,7 +137,7 @@ public class Room
    
    /*
       Method to calculate how many BTUs per hour a room will need
-      
+      @return The BTUs after calculating all the variables.
    **/
    public double btus()
    {

@@ -40,6 +40,7 @@ public class Project_nick_kolodij
       // Create a new room object
       Room room = new Room(roomName, length, width, shade);
       
+      // Print the output by calling the methods in the object
       System.out.println("\nRoom Name: " + room.getName());
       System.out.println("Room Area (in square feet): " + room.area());
       System.out.println("Amount of Shade: " + room.shadeString());
@@ -47,6 +48,7 @@ public class Project_nick_kolodij
       
    }
    
+   // A method that displays the shade menu
    public static void shade()
    {  
       
