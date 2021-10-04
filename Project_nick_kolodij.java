@@ -1,65 +1,93 @@
 // CSC251, project 1, Nick Kolodij
 
 import java.util.*;
+import java.io.*;
 
 public class Project_nick_kolodij
 {
    
-   public static void main(String[] args)
+   public static void main(String[] args) throws IOException
    {
-      // Variables to hold the information the user enters
+      // Variables to hold the information
       String roomName;
       double length;
       double width;
-      int shade;
+      int shade = 0;
+      String shadeString;
+      int littleShade =0, moderateShade=0, abundantShade=0;
       
-      // Scanner variable for input
-      Scanner keyboard = new Scanner(System.in);
+      // An array list to hold all the room objects.
+      ArrayList<Room> roomList = new ArrayList<Room>();
       
-      // Ask the user for information
-      System.out.print("Please enter the name of the room: ");
-      roomName = keyboard.nextLine();
+      // Open the Rooms.txt file
+      File file = new File("Rooms.txt");
       
-      System.out.print("Please enter the length of the room (in feet): ");
-      length = keyboard.nextDouble();
-      
-      System.out.print("Please enter the width of the room (in feet): ");
-      width = keyboard.nextDouble();
-      
-      // Call the shade method to print the menu
-      shade();
-      shade = keyboard.nextInt();
-      
-      // Validate the option the user entered
-      while (shade < 1 || shade > 3)
+      // Make sure the file exists.
+      if(!file.exists())
       {
-         System.out.print("\nInvalid choice. Please select from the options above: ");
-         shade = keyboard.nextInt();
+         System.out.println("Unable to open file.");
+         System.exit(0);
       }
       
-      // Create a new room object
-      Room room = new Room(roomName, length, width, shade);
+      Scanner inputFile = new Scanner(file);
+            
+      
+      // while loop to make sure there is more text in the file
+      while(inputFile.hasNext())
+      {
+      
+        roomName = inputFile.nextLine();
+        length = inputFile.nextDouble();
+        width = inputFile.nextDouble();
+        inputFile.nextLine();
+        shadeString = inputFile.nextLine();
+        
+        // Change how the shade information is stored to work with the other parts of the code.
+        if(shadeString.equals("Little"))
+        {
+            shade = 1;
+            littleShade +=1;
+        }
+        else if(shadeString.equals("Moderate"))
+        {
+            shade = 2;
+            moderateShade +=1;
+        }
+        else if(shadeString.equals("Abundant"))
+        {
+            shade = 3;
+            abundantShade +=1;
+        }
+
+        
+        // Create a new room object and add it to the array list of rooms.
+        roomList.add(new Room(roomName, length, width, shade));
+        
+        if(inputFile.hasNext())
+        {
+             inputFile.nextLine();
+        }
+
+
+      }
+      // Close the file.
+      inputFile.close();
       
       // Print the output by calling the methods in the object
-      System.out.println("\nRoom Name: " + room.getName());
-      System.out.println("Room Area (in square feet): " + room.area());
-      System.out.println("Amount of Shade: " + room.shadeString());
-      System.out.printf("BTUs Per Hour needed: %,.0f" ,room.btus());
+      for (int i = 0; i < roomList.size(); i++)
+      {
+         Room room = roomList.get(i);
+         
+         System.out.println("\nRoom Name: " + room.getName());
+         System.out.println("Room Area (in square feet): " + room.area());
+         System.out.println("Amount of Shade: " + room.shadeString());
+         System.out.printf("BTUs Per Hour needed: %,.0f" ,room.btus());
       
-   }
-   
-   // A method that displays the shade menu
-   public static void shade()
-   {  
-      
-      System.out.println("What is the amount of shade that this room receives?");
-      System.out.println("\n\t1. Little Shade");
-      System.out.println("\t2. Moderate Shade");
-      System.out.println("\t3. Abundant Shade");
-      System.out.print("\nPlease select from the options above: ");
-      
-   }
-   
+      }
+        System.out.println("\nNumber of rooms with little shade: " + littleShade);
+        System.out.println("Number of rooms with moderate shade: " + moderateShade);
+        System.out.println("Number of rooms with abundant shade: " + abundantShade);
+   } 
 }
 
 
