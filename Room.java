@@ -7,26 +7,29 @@ public class Room
    private double length;
    private double width;
    private int shade;
-   
+   private AirConditioner ac;
 
    // No arg constructor
    public Room()
    {
-      name = "room";
-      length = 0.0;
-      width = 0.0;
-      shade = 2;
+      this.name = "room";
+      this.length = 0.0;
+      this.width = 0.0;
+      this.shade = 2;
+      this.ac = new AirConditioner();
    }
    
    /*
        Constructor that takes args from demo class
    **/
-   public Room(String n, double l, double w, int s)
+   public Room(String n, double l, double w, int s, AirConditioner ac)
    {
-      name = n;
-      length = l;
-      width = w;
-      shade = s;
+      this.name = n;
+      this.length = l;
+      this.width = w;
+      this.shade = s;
+      this.ac = new AirConditioner();
+
    }
    
    /*
@@ -35,7 +38,7 @@ public class Room
    **/
    public void setName(String n)
    {
-      name = n;
+      this.name = n;
    }
 
    /*
@@ -44,7 +47,7 @@ public class Room
    **/
    public void setLength(double l)
    {
-      length = l;
+      this.length = l;
    }
 
    /*
@@ -53,7 +56,7 @@ public class Room
    **/
    public void setWidth(double w)
    {
-      width = w;
+      this.width = w;
    }
    
    /*
@@ -62,7 +65,7 @@ public class Room
    **/
    public void setShade(int s)
    {
-      shade = s;
+      this.shade = s;
    }
    
    /*
@@ -71,7 +74,7 @@ public class Room
    **/
    public String getName()
    {
-      return name;
+      return this.name;
    }
    
    /*
@@ -80,7 +83,7 @@ public class Room
    **/
    public double getLength()
    {
-      return length;
+      return this.length;
    }
    
    /*
@@ -89,7 +92,7 @@ public class Room
    **/
    public double getwidth()
    {
-      return width;
+      return this.width;
    }
    
    /*
@@ -98,7 +101,7 @@ public class Room
    **/
    public int getShade()
    {
-      return shade;
+      return this.shade;
    }
    
    /*
@@ -107,7 +110,7 @@ public class Room
    **/
    public String shadeString()
    {
-      int s = getShade();
+      int s = this.getShade();
       String shadeString;
       
       if (s == 1)
@@ -132,7 +135,7 @@ public class Room
    **/
    public double area()
    {
-      return length * width;
+      return this.length * this.width;
    }
    
    /*
@@ -160,10 +163,10 @@ public class Room
       double btu;
       
       // local variable that calls the area method to get its value
-      double a = area();
+      double a = this.area();
       
       // local variable that gets the value of the shade to determine if the room needs more or less cooling
-      int s = getShade();
+      int s = this.getShade();
       
       // Find out what size AC you need based on the room area
       if(a < ROOMSMALL)
@@ -197,4 +200,14 @@ public class Room
       return btu;
    }
    
+   public String toString()
+   {
+      String str = "Room Name: " + this.getName() +
+                   "\nRoom Area (in square feet): " + this.area() +
+                   "\nAmount of Shade: " + this.shadeString() +
+                   String.format("\nBTUs Per Hour needed: %,.0f" , this.btus()) +
+                   this.ac;
+      
+      return str;
+   }
 }
