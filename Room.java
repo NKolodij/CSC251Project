@@ -1,4 +1,4 @@
-// CSC251, project 1, Nick Kolodij
+// CSC251, project 3, Nick Kolodij
 
 public class Room
 {
@@ -28,7 +28,7 @@ public class Room
       this.length = l;
       this.width = w;
       this.shade = s;
-      this.ac = new AirConditioner();
+      this.ac = ac;
 
    }
    
@@ -222,7 +222,7 @@ public class Room
                    "\nRoom Area (in square feet): " + this.area() +
                    "\nAmount of Shade: " + this.shadeString() +
                    String.format("\nBTUs Per Hour needed: %,.0f" , this.btus()) +
-                   this.ac;
+                   this.ac + "\n";
       
       return str;
    }
