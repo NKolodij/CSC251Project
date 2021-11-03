@@ -200,6 +200,22 @@ public class Room
       return btu;
    }
    
+   // method to check if the room's air conditioner provides enough cooling for the room
+   public boolean hasAdequateCooling()
+   {
+      
+      if(btus() < this.ac.getBTUs())
+      {
+         return false;
+      }
+      else
+      {
+         return true;
+      }
+      
+   }
+   
+   // toString method to display room information along with the airconditioner information
    public String toString()
    {
       String str = "Room Name: " + this.getName() +
