@@ -60,7 +60,7 @@ public class AirConditioner
    // toString method to display the information about this air conditioner unit
    public String toString()
    {
-      String str = "Air Conditioner Manufacturer: " + this.manufacturer +
+      String str = "\nAir Conditioner Manufacturer: " + this.manufacturer +
                    "\nAir Conditioner Type: " + this.type +
                    "\nAir Conditioner Cooling Capacity (BTUs Per Hour): " + this.btus;
       return str;

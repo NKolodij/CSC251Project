@@ -65,8 +65,11 @@ public class Project_nick_kolodij
         }
 
         
-        // Create a new room object and add it to the array list of rooms.
-        roomList.add(new Room(roomName, length, width, shade, new AirConditioner(acName, acType, acBTUs)));
+        // Create a new AirConditioner object, then add it to a new Room object and add it to the array list of rooms.
+        AirConditioner ac = new AirConditioner(acName, acType, acBTUs);
+        Room room = new Room(roomName, length, width, shade, ac);
+        
+        roomList.add(room);
         
         if(inputFile.hasNext())
         {
@@ -84,10 +87,7 @@ public class Project_nick_kolodij
       {
          Room room = roomList.get(i);
          
-         System.out.println("\nRoom Name: " + room.getName());
-         System.out.println("Room Area (in square feet): " + room.area());
-         System.out.println("Amount of Shade: " + room.shadeString());
-         System.out.printf("BTUs Per Hour needed: %,.0f" ,room.btus());
+         System.out.println(room);
       
       }
    } 
