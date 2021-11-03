@@ -14,7 +14,6 @@ public class Project_nick_kolodij
       double width;
       int shade = 0;
       String shadeString;
-      int littleShade =0, moderateShade=0, abundantShade=0;
       
       String acName;
       String acType;
@@ -55,17 +54,14 @@ public class Project_nick_kolodij
         if(shadeString.equals("Little"))
         {
             shade = 1;
-            littleShade +=1;
         }
         else if(shadeString.equals("Moderate"))
         {
             shade = 2;
-            moderateShade +=1;
         }
         else if(shadeString.equals("Abundant"))
         {
             shade = 3;
-            abundantShade +=1;
         }
 
         
@@ -94,9 +90,6 @@ public class Project_nick_kolodij
          System.out.printf("BTUs Per Hour needed: %,.0f" ,room.btus());
       
       }
-        System.out.println("\nNumber of rooms with little shade: " + littleShade);
-        System.out.println("Number of rooms with moderate shade: " + moderateShade);
-        System.out.println("Number of rooms with abundant shade: " + abundantShade);
    } 
 }
 
