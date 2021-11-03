@@ -1,4 +1,4 @@
-// CSC251, project 1, Nick Kolodij
+// CSC251, project 3, Nick Kolodij
 
 import java.util.*;
 import java.io.*;
@@ -16,11 +16,15 @@ public class Project_nick_kolodij
       String shadeString;
       int littleShade =0, moderateShade=0, abundantShade=0;
       
+      String acName;
+      String acType;
+      int acBTUs;
+      
       // An array list to hold all the room objects.
       ArrayList<Room> roomList = new ArrayList<Room>();
       
       // Open the Rooms.txt file
-      File file = new File("Rooms.txt");
+      File file = new File("Rooms2.txt");
       
       // Make sure the file exists.
       if(!file.exists())
@@ -41,6 +45,11 @@ public class Project_nick_kolodij
         width = inputFile.nextDouble();
         inputFile.nextLine();
         shadeString = inputFile.nextLine();
+        acName = inputFile.nextLine();
+        acType = inputFile.nextLine();
+        acBTUs = inputFile.nextInt();
+
+
         
         // Change how the shade information is stored to work with the other parts of the code.
         if(shadeString.equals("Little"))
@@ -61,10 +70,11 @@ public class Project_nick_kolodij
 
         
         // Create a new room object and add it to the array list of rooms.
-        roomList.add(new Room(roomName, length, width, shade));
+        roomList.add(new Room(roomName, length, width, shade, new AirConditioner(acName, acType, acBTUs)));
         
         if(inputFile.hasNext())
         {
+             inputFile.nextLine();
              inputFile.nextLine();
         }
 
