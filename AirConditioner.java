@@ -25,6 +25,14 @@ public class AirConditioner
       this.btus = btus;  
    }
    
+   // copy constructor
+   public AirConditioner(AirConditioner obj)
+   {
+      this.manufacturer = obj.manufacturer;
+      this.type = obj.type;
+      this.btus = obj.btus; 
+   }
+   
    // Setters for fields
    public void setManu(String manu)
    {     

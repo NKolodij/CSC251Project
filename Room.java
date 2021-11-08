@@ -28,8 +28,18 @@ public class Room
       this.length = l;
       this.width = w;
       this.shade = s;
-      this.ac = ac;
+      this.ac = new AirConditioner(ac);
 
+   }
+   
+   // copy constructor
+   public Room(Room obj)
+   {
+      this.name = obj.name;
+      this.length = obj.length;
+      this.width = obj.width;
+      this.shade = obj.shade;
+      this.ac = new AirConditioner(ac);
    }
    
    /*
